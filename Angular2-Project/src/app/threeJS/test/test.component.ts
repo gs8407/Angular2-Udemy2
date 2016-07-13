@@ -34,36 +34,25 @@ export class ThreeJs_Test_Component {
         this.renderer.setClearColor(0xF070F7,1);                   
         this.renderer.clear();
        
-    
         this.scene = new THREE.Scene();                             
 
         this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
         this.camera.position.set(0,0,-20); 
         this.camera.lookAt(new THREE.Vector3(0,0,0));
 
-        this.sphereGeometry = new THREE.SphereGeometry(6, 20, 20);
-        this.sphereMaterial = new THREE.MeshBasicMaterial({
-                   map: THREE.ImageUtils.loadTexture('img/test3JS/earthmap.jpg') 
-           });
+        this.sphereGeometry = new THREE.SphereGeometry(6);
+        this.sphereMaterial = new THREE.MeshBasicMaterial({color: 0x7777ff, wireframe: true});
         this.sphere = new THREE.Mesh(this.sphereGeometry, this.sphereMaterial);
         this.sphere.position.set(0,0,0); 
 
         this.scene.add(this.sphere);
 
-        this.scene.add(new THREE.AmbientLight(new THREE.Color(0.9,0.9,0.9).getHex()));
-
         this.renderer.render(this.scene, this.camera);
     }
 
-    render() {        
-        requestAnimationFrame(() => this.render());
-        this.renderer.render(this.scene, this.camera);
-    }
-    
 
     onAppend3JS(){
-        console.log("Appended 3JS to div.");  
-        this.render();      
+        console.log("Appended 3JS to div.");        
         this.my_content.nativeElement.appendChild(this.renderer.domElement);
     }
 
