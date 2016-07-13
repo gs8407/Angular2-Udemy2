@@ -7,7 +7,7 @@ import {Component, ViewChild, ElementRef} from "@angular/core";
 
 @Component({
   moduleId: module.id,
-  selector:'pb-threeJS-test',
+  selector:'pb-threeJS-addTexture',
   template: 
     `    
         <button (click)="onAppend3JS()">Append</button>
@@ -17,7 +17,7 @@ import {Component, ViewChild, ElementRef} from "@angular/core";
 })
 
 
-export class ThreeJs_Test_Component {
+export class ThreeJs_AddTexture_Component {
     @ViewChild('myTestContent') my_content: ElementRef; 
     
     renderer: THREE.WebGLRenderer;
@@ -34,7 +34,6 @@ export class ThreeJs_Test_Component {
         this.renderer.setClearColor(0xF070F7,1);                   
         this.renderer.clear();
        
-    
         this.scene = new THREE.Scene();                             
 
         this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
@@ -44,7 +43,7 @@ export class ThreeJs_Test_Component {
         this.sphereGeometry = new THREE.SphereGeometry(6, 20, 20);
         this.sphereMaterial = new THREE.MeshBasicMaterial({
                    map: THREE.ImageUtils.loadTexture('img/test3JS/earthmap.jpg') 
-           });
+            });
         this.sphere = new THREE.Mesh(this.sphereGeometry, this.sphereMaterial);
         this.sphere.position.set(0,0,0); 
 
