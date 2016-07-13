@@ -1,4 +1,4 @@
-## Setting up an Angular2 project
+# Setting up an Angular2 project
 
 #### Install Angular CLI (comand-line interface) (-g globally)
 ```
@@ -48,6 +48,3 @@ typings install
 ```
 ng serve
 ```
-
-go to  `localhost:4200`
-
