@@ -23,10 +23,12 @@ export class ThreeJs_Test2_Component {
     scene: THREE.Scene;
     camera: THREE.Camera;
     boxGeometry: THREE.BoxGeometry;
-    material: THREE.MeshBasicMaterial;
+    cubeMaterial: any;
     cube: THREE.Mesh;
+    spotLight: THREE.SpotLight;
 
     axis: THREE.AxisHelper;
+    grid: THREE.GridHelper;
 
 
 
@@ -34,7 +36,9 @@ export class ThreeJs_Test2_Component {
     
         this.renderer = new THREE.WebGLRenderer({ alpha: true });   
         this.renderer.setSize( window.innerWidth/2, window.innerHeight/2 );                             
-        this.renderer.setClearColor(0xF070F7,1);                   
+        this.renderer.setClearColor(0xbbbbbb,1);        
+        this.renderer.shadowMapEnabled=true;
+        // this.renderer.shadowMapSoft=true;           
         this.renderer.clear();
        
     
@@ -47,16 +51,26 @@ export class ThreeJs_Test2_Component {
         this.camera.lookAt(this.scene.position);
 
 
-        this.boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
-        this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        this.cube = new THREE.Mesh( this.boxGeometry, this.material );
+
+        this.boxGeometry = new THREE.BoxGeometry( 4, 2, 3 );
+        this.cubeMaterial = new THREE.MeshLambertMaterial({color: 0x0033ff});
+        this.cube = new THREE.Mesh( this.boxGeometry, this.cubeMaterial );
         this.cube.position.x = 10;
         this.cube.position.y = 0;
         this.cube.position.z = 0;
+        this.cube.castShadow = true;
         this.scene.add(this.cube);
+
+        this.spotLight = new THREE.SpotLight(0xffffff);
+        this.spotLight.castShadow=true;
+        this.spotLight.position.set(15,90,50);
+        this.scene.add(this.spotLight);
         
         this.axis = new THREE.AxisHelper(20);
         this.scene.add(this.axis);
+
+        this.grid = new THREE.GridHelper(50, 5);
+        this.scene.add(this.grid);
 
 
 
