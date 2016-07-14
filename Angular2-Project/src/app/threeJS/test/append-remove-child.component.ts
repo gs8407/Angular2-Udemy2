@@ -24,7 +24,7 @@ export class ThreeJs_AppendRemoveChild_Component {
     
         this.renderer = new THREE.WebGLRenderer({ alpha: true });
         this.renderer.setSize(100,100);
-        this.renderer.setClearColor(0xF070F7,1);
+        this.renderer.setClearColor(0xFF0000,1);
         this.renderer.clear();  // TO ASK: what is this? 
     }
 
